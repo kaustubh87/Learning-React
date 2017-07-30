@@ -1,19 +1,31 @@
 var Greeter = React.createClass({
-    render: function(){
 
+//Default properties
+    getDefaultProps: function(){
+        return {
+            name: 'React',
+            message : 'This is a form component'
+        };
+    },
+
+    render: function(){
+        //Stores property
+        var name = this.props.name;
+        var message = this.props.message;
         //Returns a JSX Object
         return (
-           React.createElement(
-               'h1',
-               null,
-               'Hello React.createElement'
-           )
-           
+           <div>
+               <h1>Hello {name}!</h1>
+               {message}
+           </div>
         );
     }
 });
 
+var firstName = 'Kaustubh';
+var msg = "Not a default prop message";
+
 ReactDOM.render(
-    <Greeter/>,
+    <Greeter name= {firstName} message = {msg}/>,
     document.getElementById('app')
 );
